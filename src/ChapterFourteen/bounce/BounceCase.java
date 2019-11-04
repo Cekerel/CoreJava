@@ -1,4 +1,4 @@
-package ChapterTwelve;
+package ChapterFourteen.bounce;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -92,7 +92,7 @@ class Ball {
 			dx = -dx;
 		}
 		if (x + XSIZE >= bounds.getMaxX()) {
-			x = bounds.getMaxX();
+			x = bounds.getMaxX() - XSIZE;
 			dx = -dx;
 		}
 		if (y < bounds.getMinY()) {
@@ -115,7 +115,7 @@ class Ball {
 
 class BallComponent extends JPanel {
 	private static final int DEFAULT_WIDTH = 450;
-	private static final int DEFAULT_HEIGHT = 350;
+	private static final int DEFAULT_HEIGHT = 450;
 	
 	private java.util.List<Ball> balls = new ArrayList<>();
 	

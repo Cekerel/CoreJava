@@ -1,4 +1,4 @@
-package ChapterTwelve;
+package ChapterFourteen.bounce;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -17,7 +17,7 @@ public class BounceThreadCase {
 class BounceFrame1 extends JFrame {
 	private BallComponent comp;
 	public static final long STEPS = 1000000000;
-	public static final int DELAY = 5;
+	public static final int DELAY = 1;
 	
 	/**
 	 * Constructs the frame with the component for showing the bouncing ball and

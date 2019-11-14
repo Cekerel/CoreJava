@@ -1,6 +1,6 @@
-package ChapterFourteen.synch2;
+package ChapterFourteen.deadlock;
 
-public class SynchBankTest {
+public class DeadLockTest {
     public static final int NACCOUNTS = 10;
     public static final double INITIAL_BALANCE = 1000;
     public static final double MAX_AMOUNT = 1000;
@@ -14,12 +14,12 @@ public class SynchBankTest {
               try {
                   while(true) {
                       int toAccount = (int) (bank.size() * Math.random());
-                      double amount = MAX_AMOUNT * Math.random();
+                      double amount = MAX_AMOUNT * Math.random() * 2;
                       bank.transfer(fromAccount, toAccount, amount);
                       Thread.sleep((int)(DELAY * Math.random()));
                   }
               } catch (InterruptedException e) {
-
+                  e.printStackTrace();
               }
             };
             Thread t = new Thread(r);

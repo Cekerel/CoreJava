@@ -26,14 +26,16 @@ public class BlockingQueueTest {
                 }
             };
             new Thread(enumerator).start();
+
+
             for (int i = 0; i <= SEARCH_THREADS; i++) {
                 Runnable search = () -> {
                     try {
                         boolean done = false;
                         while (!done) {
                             File file = queue.take();
-                            if (file == DUMMY) {
-                                queue.put(file);
+                            if (file == DUMMY) { // if the name of the file is an empty string, put it at the end of the blocking queue, otherwise open it directly.
+                                queue.put(file); 
                                 done = true;
                             } else
                                 search(file, keyword);

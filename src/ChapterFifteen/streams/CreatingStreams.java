@@ -6,10 +6,12 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Iterator;
 import java.util.List;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
 
 /**
  * CreatingStreams
@@ -33,6 +35,17 @@ public class CreatingStreams {
         System.out.println();
     }
 
+    public static <T> void showElements(String title, Stream<T> stream) {
+        System.out.println(title + ": ");
+        List<T> list = stream.collect(Collectors.toList());
+        Iterator<T> iterator = list.iterator();
+        while (iterator.hasNext()) {
+            System.out.print(iterator.next() + " ");
+        }
+        System.out.println("\n");
+        System.out.println();
+    }
+
     public static void main(String[] args) throws IOException {
         Path path = Paths.get("src\\ChapterSeven\\LoggingImageViewer.java");
         String contents = new String(Files.readAllBytes(path), StandardCharsets.UTF_8);
@@ -51,6 +64,9 @@ public class CreatingStreams {
 
         Stream<BigInteger> integers = Stream.iterate(BigInteger.ONE, n -> n.add(BigInteger.ONE));
         show("integers", integers);
+
+        Stream<BigInteger[]> fibonacciStream = Stream.iterate(new BigInteger[] {BigInteger.ZERO, BigInteger.ONE}, t -> new BigInteger[] {t[1], t[0].add(t[1])});
+        showElements("Fibonacci Stream", fibonacciStream.map(t -> t[0]).limit(100));
 
         Stream<String> wordsAnotherWay = Pattern.compile("\\PL+").splitAsStream(contents);
         show("wordsAnotherWay", wordsAnotherWay);

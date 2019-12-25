@@ -25,6 +25,12 @@ public class NumericStream {
         System.out.println("\n");
     }
 
+    private static void showTuple(String title, Stream<int []> stream) {
+        System.out.println(title + " ");
+        stream.forEach(t -> System.out.println(t[0] + " " + t[1] + " " + t[2]));
+    }
+    
+
     public static void main(String[] args) {
         try (Scanner input = new Scanner(new File("src\\ChapterFifteen\\streams\\string"), "utf-8")) {
             List<String> list = new ArrayList<>();
@@ -47,8 +53,23 @@ public class NumericStream {
             System.out.println("The minimum string length is " + minimumStringLength.orElse(Integer.MIN_VALUE));
             OptionalDouble averageStringLength = list.stream().mapToInt(w -> w.length()).average();
             System.out.println("The average string length is " + averageStringLength.orElse(0));
+
+            IntStream rangeNotClosedStream = IntStream.range(0, 100);
+            show("The stream without the closed range", rangeNotClosedStream.boxed());
+            IntStream rangeClosedStream = IntStream.rangeClosed(0, 100);
+            show("The stream with the closed range", rangeClosedStream.boxed());
+
+
+            Stream<int []> pythagoreanTuple = IntStream.rangeClosed(1, 100)
+                                                    .boxed()
+                                                    .flatMap(a -> IntStream.rangeClosed(a, 100)
+                                                            .mapToObj(b -> new int[] {a, b, (int)Math.sqrt(a * a + b * b)})).filter(t -> t[2] % 1 == 0);
+            showTuple("Pythagorean Tuples", pythagoreanTuple);
+
+
         } catch (Exception e) {
             //TODO: handle exception
+            e.printStackTrace();
         }
     }
 }

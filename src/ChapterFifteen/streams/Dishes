@@ -1,9 +1,9 @@
-Pork MEAT 800
-Potato VEGETABLES 900
-Apple FRUIT 200
-Chicken MEAT 350
-Beef MEAT 500
-Prawns FISH 300
-Salmon FISH 450
-Rice OTHER 300
-Pizza OTHER 600
+Pork MEAT 800 false
+Potato VEGETABLES 900 true
+Apple FRUIT 200 true
+Chicken MEAT 350 false
+Beef MEAT 500 false
+Prawns FISH 300 false
+Salmon FISH 450 false
+Rice OTHER 300 true
+Pizza OTHER 600 false

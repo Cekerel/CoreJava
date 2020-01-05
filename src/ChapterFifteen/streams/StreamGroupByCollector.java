@@ -45,9 +45,7 @@ public class StreamGroupByCollector {
                 return Dish.CaloricLevel.FAT;
         }));
         Set<Map.Entry<Dish.CaloricLevel, List<Dish>>> entrySet = dishByCaloricLevel.entrySet();
-        Iterator iterator = entrySet.iterator();
-        while (iterator.hasNext()) {
-            Map.Entry<Dish.CaloricLevel, List<Dish>> entry = (Map.Entry<Dish.CaloricLevel, List<Dish>>) iterator.next();
+        for (Map.Entry<Dish.CaloricLevel, List<Dish>> entry : entrySet) {
             System.out.print(entry.getKey() + ": ");
             List<Dish> dishes = entry.getValue();
             for (Dish dish2 : dishes) {
@@ -67,18 +65,12 @@ public class StreamGroupByCollector {
                 })));
         Set<Map.Entry<Dish.Type, Map<Dish.CaloricLevel, List<Dish>>>> entryForDishesByTypeCaloricLevel = dishesByTypeCaloricLevel
                 .entrySet();
-        Iterator iterator2 = entryForDishesByTypeCaloricLevel.iterator();
-        while (iterator2.hasNext()) {
-            Map.Entry<Dish.Type, Map<Dish.CaloricLevel, List<Dish>>> entry = (Map.Entry<Dish.Type, Map<Dish.CaloricLevel, List<Dish>>>) iterator2
-                    .next();
+        for (Map.Entry<Dish.Type, Map<Dish.CaloricLevel, List<Dish>>> entry : entryForDishesByTypeCaloricLevel) {
             Dish.Type type = entry.getKey();
             System.out.print(type + ": {");
             Set<Map.Entry<Dish.CaloricLevel, List<Dish>>> set2 = ((Map<Dish.CaloricLevel, List<Dish>>) entry.getValue())
                     .entrySet();
-            Iterator iterator3 = set2.iterator();
-            while (iterator3.hasNext()) {
-                Map.Entry<Dish.CaloricLevel, List<Dish>> entry2 = (Map.Entry<Dish.CaloricLevel, List<Dish>>) iterator3
-                        .next();
+            for (Map.Entry<Dish.CaloricLevel, List<Dish>> entry2 : set2) {
                 System.out.print(entry2.getKey() + ": [");
                 List<Dish> dishListAfterGroupingby = entry2.getValue();
                 for (Dish dish : dishListAfterGroupingby) {
@@ -92,9 +84,7 @@ public class StreamGroupByCollector {
         Map<Dish.Type, Long> typesCount = dishList.stream()
                 .collect(Collectors.groupingBy(Dish::getType, Collectors.counting()));
         Set<Map.Entry<Dish.Type, Long>> typesCountEntrySet = typesCount.entrySet();
-        Iterator typesCountEntrySetIterator = typesCountEntrySet.iterator();
-        while (typesCountEntrySetIterator.hasNext()) {
-            Map.Entry<Dish.Type, Long> entry2 = (Map.Entry<Type, Long>) typesCountEntrySetIterator.next();
+        for (Map.Entry<Dish.Type, Long> entry2 : typesCountEntrySet) {
             System.out.println(entry2.getKey() + ": " + entry2.getValue());
         }
 
@@ -102,9 +92,7 @@ public class StreamGroupByCollector {
                 .collect(Collectors.groupingBy(Dish::getType, Collectors.collectingAndThen(
                         Collectors.maxBy(Comparator.comparingInt(Dish::getCalories)), Optional::get)));
         Set<Map.Entry<Dish.Type, Dish>> mostCaloricByTypeEntrySet = mostCaloricByType.entrySet();
-        Iterator mostCaloricByTypeIterator = mostCaloricByTypeEntrySet.iterator();
-        while (mostCaloricByTypeIterator.hasNext()) {
-            Map.Entry<Dish.Type, Dish> entry = (Map.Entry<Dish.Type, Dish>) mostCaloricByTypeIterator.next();
+        for (Map.Entry<Dish.Type, Dish> entry : mostCaloricByTypeEntrySet) {
             System.out.println(entry.getKey() + ": " + entry.getValue().toString());
 
         }
@@ -112,9 +100,7 @@ public class StreamGroupByCollector {
         Map<Dish.Type, Double> averageCaloricByType = dishList.stream()
                 .collect(Collectors.groupingBy(Dish::getType, Collectors.averagingInt(Dish::getCalories)));
         Set<Map.Entry<Dish.Type, Double>> averageCaloricByTypeEntrySet = averageCaloricByType.entrySet();
-        Iterator averageCaloricByTypeIterator = averageCaloricByTypeEntrySet.iterator();
-        while (averageCaloricByTypeIterator.hasNext()) {
-            Map.Entry<Dish.Type, Double> entry = (Map.Entry<Dish.Type, Double>) averageCaloricByTypeIterator.next();
+        for (Map.Entry<Dish.Type, Double> entry : averageCaloricByTypeEntrySet) {
             System.out.println(entry.getKey() + " " + entry.getValue());
         }
 

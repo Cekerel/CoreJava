@@ -4,34 +4,15 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.IntSummaryStatistics;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 import java.util.Scanner;
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.stream.Stream;
 import java.util.stream.Collectors;
-import java.util.stream.Collectors.*;
-
-import ChapterFifteen.streams.Dish.CaloricLevel;
-import ChapterFifteen.streams.Dish.Type;
 
 /**
  * StreamCollectors
  */
 public class StreamReduceAndSumCollector {
-
-    private static <T> void show(String title, Stream<T> stream) {
-        System.out.println(title + " ");
-        List<T> list = stream.collect(Collectors.toList());
-        Iterator<T> iterator = list.iterator();
-        while (iterator.hasNext()) {
-            System.out.print(iterator.next() + " ");
-        }
-        System.out.println("\n");
-    }
 
     public static void main(String[] args) {
         try (Scanner input = new Scanner(new File("src\\ChapterFifteen\\streams\\string"), "UTF-8")) {
@@ -80,7 +61,6 @@ public class StreamReduceAndSumCollector {
             System.out.println("The shortest string is " + theShortestString.orElse(""));
 
         } catch (Exception e) {
-            // TODO: handle exception
             e.printStackTrace();
         }
     }

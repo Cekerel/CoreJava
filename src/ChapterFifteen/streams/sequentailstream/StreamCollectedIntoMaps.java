@@ -1,4 +1,4 @@
-package ChapterFifteen.streams;
+package ChapterFifteen.streams.sequentailstream;
 
 import java.util.Arrays;
 import java.util.Collections;

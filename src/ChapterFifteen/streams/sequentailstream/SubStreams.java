@@ -1,4 +1,4 @@
-package ChapterFifteen.streams;
+package ChapterFifteen.streams.sequentailstream;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -24,7 +24,7 @@ public class SubStreams {
     }
 
     public static void main(String[] args) {
-        try (Scanner input = new Scanner(new File("src\\ChapterFifteen\\streams\\string"), "UTF-8")) {
+        try (Scanner input = new Scanner(new File("src\\ChapterFifteen\\streams\\sequentailstream\\string"), "UTF-8")) {
             List<String> list = new ArrayList<>();
             while (input.hasNextLine()) {
                 list.add(input.nextLine());

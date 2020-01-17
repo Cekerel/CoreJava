@@ -1,4 +1,4 @@
-package ChapterFifteen.streams;
+package ChapterFifteen.streams.sequentailstream;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -128,8 +128,10 @@ class PrimeNumbersCollector implements Collector<Integer, Map<Boolean, List<Inte
     }
 
     public boolean isPrime(List<Integer> primes, Integer candidate) {
+        //Get the square root of the candidate
         int candidateRoot = (int) Math.sqrt((double) candidate);
 
+        // Use the existing primes to determine whether the number is a prime or not, then return the result.
         return takeWhile(primes, i -> i <= candidateRoot).stream().noneMatch(p -> candidate % p == 0);
     }
 

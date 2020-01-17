@@ -1,4 +1,7 @@
-package ChapterFifteen.streams;
+package ChapterFifteen.streams.parallelStream;
+
+import java.util.function.Function;
+import java.util.stream.Stream;
 
 /**
  * ParallelStreamForkAndJoin
@@ -6,6 +9,6 @@ package ChapterFifteen.streams;
 public class ParallelStreamForkAndJoin {
 
     public static void main(String[] args) {
-
+        
     }
 }

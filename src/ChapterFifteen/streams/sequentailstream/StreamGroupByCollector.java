@@ -1,4 +1,4 @@
-package ChapterFifteen.streams;
+package ChapterFifteen.streams.sequentailstream;
 
 import java.util.Comparator;
 import java.util.List;
@@ -7,7 +7,8 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import ChapterFifteen.streams.Dish.CaloricLevel;
+import ChapterFifteen.streams.sequentailstream.Dish.CaloricLevel;
+
 
 /**
  * StreamCollectors

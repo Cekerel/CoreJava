@@ -1,4 +1,4 @@
-package ChapterFifteen.streams;
+package ChapterFifteen.streams.sequentailstream;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 public class StreamReduceAndSumCollector {
 
     public static void main(String[] args) {
-        try (Scanner input = new Scanner(new File("src\\ChapterFifteen\\streams\\string"), "UTF-8")) {
+        try (Scanner input = new Scanner(new File("src\\ChapterFifteen\\streams\\sequentailstream\\string"), "UTF-8")) {
             List<String> list = new ArrayList<>();
             while (input.hasNext()) {
                 list.add(input.next());

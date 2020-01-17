@@ -1,4 +1,4 @@
-package ChapterFifteen.streams;
+package ChapterFifteen.streams.sequentailstream;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -74,7 +74,7 @@ public class Dish {
 
 
     public static List<Dish> generateDishList() {
-        String path = "src\\ChapterFifteen\\streams\\Dishes";
+        String path = "src\\ChapterFifteen\\streams\\sequentailstream\\string";
         List<Dish> dishList = new ArrayList<>();
         try (Scanner input = new Scanner(new File(path), "UTF-8")) {
             while (input.hasNextLine()) {

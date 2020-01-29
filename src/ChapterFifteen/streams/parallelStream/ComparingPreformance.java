@@ -19,11 +19,15 @@ public class ComparingPreformance {
         return fastest;
     }
 
-    
-
     public static void main(String[] args) {
-        System.out.println("Sequential sum done in: " + measureSumPerf(ParallelStream::sequentialSum, 1_000_000) + " msecs");
+        System.out.println(
+                "Sequential sum done in: " + measureSumPerf(ParallelStream::sequentialSum, 1_000_000) + " msecs");
 
-        
+        System.out.println(
+                "Iterative sum code in: " + measureSumPerf(ParallelStream::iterativeSum, 1_000_000) + " msecs.");
+
+        System.out
+                .println("Parallel sum code in: " + measureSumPerf(ParallelStream::parallelSum, 1_000_000) + " msecs.");
+
     }
 }

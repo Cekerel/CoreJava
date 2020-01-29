@@ -52,12 +52,12 @@ public class StreamCollectedIntoMaps {
         System.out.println("idToName: " + idToName);
 
         Map<Integer, Person> idToPerson = personList.stream().collect(Collectors.toMap(Person::getId, Function.identity()));
-        System.out.println("idToPerson: " + idToPerson.getClass().getName() + idToPerson);
+        System.out.println("idToPerson: " + idToPerson.getClass().getName() + " " + idToPerson);
 
         idToPerson = personList.stream().collect(Collectors.toMap(Person::getId, Function.identity(), (existingValue, newValue) -> {
             throw new IllegalStateException();
         }, TreeMap::new));
-        System.out.println("idToPerson: " + idToPerson.getClass().getName() + idToPerson);
+        System.out.println("idToPerson: " + idToPerson.getClass().getName() + " " + idToPerson);
 
         Map<String, String> languageNames = Stream.of(Locale.getAvailableLocales()).collect(Collectors.toMap(Locale::getDisplayLanguage,
                 l -> l.getDisplayLanguage(l), (existingValue, newValue) -> existingValue));

@@ -6,9 +6,15 @@ import java.time.LocalDate;
  * Employee
  */
 public class Employee {
+	public final static Integer RECORD_SIZE = 100;
+	public final static Integer NAME_SIZE = 40;
     private String name;
     private double salary;
     private LocalDate hireday;
+
+	public Employee() {
+
+	}
 
     public Employee(String name, double salary, int year, int month, int day) {
         this.name = name;
@@ -43,7 +49,7 @@ public class Employee {
 	@Override
 	public String toString() {
 		return "{" +
-			" name='" + getName() + "'" +
+			"name='" + getName() + "'" +
 			", salary='" + getSalary() + "'" +
 			", hireday='" + getHireday() + "'" +
 			"}";

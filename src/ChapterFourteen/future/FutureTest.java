@@ -9,6 +9,8 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 import java.util.concurrent.FutureTask;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
 /**
  * @version 1.01 2012-01-26
@@ -27,8 +29,8 @@ public class FutureTest {
             Thread t = new Thread(task);
             t.start();
             try {
-                System.out.println(task.get() + " matching files.");
-            } catch (ExecutionException e) {
+                System.out.println(task.get(3, TimeUnit.SECONDS) + " matching files.");
+            } catch (ExecutionException | TimeoutException e) {
                 //TODO: handle exception
                 e.printStackTrace();
             }
@@ -76,8 +78,9 @@ class MatchCounter implements Callable<Integer> {
             }
             for (Future<Integer> result : results) {
                 try {
-                    count += result.get();
-                } catch (ExecutionException e) {
+                    // count += result.get();
+                    count += result.get(10, TimeUnit.SECONDS);
+                } catch (ExecutionException | TimeoutException e) {
                     e.printStackTrace();
                     //TODO: handle exception
                 }
